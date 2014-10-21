@@ -45,26 +45,26 @@ echo "Updating homebrew"
 brew update
 # Install GNU core utilities (those that come with OS X are outdated)
 
-echo ""
-echo "Installing GNU core utilities"
-brew install coreutils
+# echo ""
+# echo "Installing GNU core utilities"
+#brew install coreutils
 
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
-echo ""
-echo "Installing GNU find, locate, updatedb, and xargs, g-prefixed"
-brew install findutils
+# echo ""
+# echo "Installing GNU find, locate, updatedb, and xargs, g-prefixed"
+#brew install findutils
 
 # Install Bash 4
-echo ""
-echo "Installing Bash 4"
-brew install bash
+# echo ""
+# echo "Installing Bash 4"
+#brew install bash
 
 # Install more recent versions of some OS X tools
-echo ""
-echo "Installing more recent versions of some OS X tools"
-brew tap homebrew/dupes
-brew install homebrew/dupes/grep
-echo 'export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"' >> ~/.zshrc
+# echo ""
+# echo "Installing more recent versions of some OS X tools"
+#brew tap homebrew/dupes
+#brew install homebrew/dupes/grep
+#echo 'export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"' >> ~/.zshrc
 
 # Brew packages that I use a lot
 binaries=(
@@ -76,6 +76,7 @@ binaries=(
 	nginx
 	redis
 	siege
+	mariadb
 )
 
 echo "Installing binaries..."
@@ -93,6 +94,7 @@ brew install caskroom/cask/brew-cask
 brew tap caskroom/versions
 # I like the symlinks to be in /Applications instead of the default cask config
 echo 'export HOMEBREW_CASK_OPTS="--appdir=/Applications"' >> ~/.zshrc
+echo 'export HOMEBREW_CASK_OPTS="--appdir=/Applications"' >> ~/.bashrc
 #
 # Some cask apps that I use.
 apps=(
@@ -117,7 +119,7 @@ brew cask install ${apps[@]}
 
 # Cask I use for development
 devel_apps=(
-	iterm
+	iterm2
 	sublime-text3
 	robomongo
 	sequel-pro
@@ -134,14 +136,14 @@ echo ""
 echo "Continue?"
 select yn in "Yes" "No"; do
   case $yn in
-    Yes ) echo "";;
+    Yes ) echo ""; break;;
     No ) echo "byebye"; exit 1;;
   esac
 done
 
 # Ask for the administrator password upfront
 sudo -v
- 
+
 # Keep-alive: update existing `sudo` time stamp until script has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 

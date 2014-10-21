@@ -17,6 +17,8 @@ A script to help you set up your development enviroment on OSX. It was custom ma
 - `nginx`
 - `redis`
 - `siege`
+- `siege`
+- `mariadb`
 
 **Install apps (that I use):**
 
